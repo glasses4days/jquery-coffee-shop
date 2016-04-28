@@ -39,27 +39,30 @@
             </tr>
         </table>
 
-        <h4>Total: <span id="revenue"><!-- Revenue Message will show up here --></span></h4>
+        <h4>Total: <span id="revenue">Revenue Message will show up here </span></h4>
     </div>
 </div>
-
+<script src="https://code.jquery.com/jquery.js"></script>
 <script>
 
-    var myImage = document.getElementById("coffee_image");
-    var myRevenueMessage = document.getElementById("revenue");
-
-    myImage.setAttribute('src', "static/coffee_beans.jpg");
-
-    myImage.addEventListener('click', function () {
-        return makeCoffee("brew");
-    });
+    
+    $("#coffee_image").attr("src", "static/coffee_beans.jpg");
+    //Select #coffee_img and give it the attribute of the coffee_bean img location.
+    
+    $("#coffee_image").click(makeCoffee);
+    //Adding an event listener of click to #coffee_img which calls makeCoffee function
 
     function makeCoffee() {
-         myImage.src = "static/coffee_machine.jpg";
-         setTimeout(function() { myImage.setAttribute('src', "static/coffee_mug.jpg"); }, 500);
-         setTimeout(function() { myImage.setAttribute('src', "static/coffee_beans.jpg"); }, 1500);
+        //Create function makeCoffee
+        $("#coffee_image").attr("src", "static/coffee_machine.jpg");
+        //Added attribute of new image to #coffee_image
+         setTimeout(function() { $("#coffee_image").attr("src", "static/coffee_mug.jpg"); }, 500);
+        //Added yet another attribute of new image with a 500ms delay
+         setTimeout(function() { $("#coffee_image").attr("src", "static/coffee_beans.jpg"); }, 1500);
+         //Added yet another attribute of new image with a 1500ms delay
     }
 
+    
 </script>
 
 </body>

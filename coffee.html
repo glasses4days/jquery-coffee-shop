@@ -49,11 +49,15 @@
     $("#coffee_image").attr("src", "static/coffee_beans.jpg");
     //Select #coffee_img and give it the attribute of the coffee_bean img location.
     
-    $("#coffee_image").click(makeCoffee);
+    $("#coffee_image").click(function(){return makeCoffee("brew");});
     //Adding an event listener of click to #coffee_img which calls makeCoffee function
 
-    function makeCoffee() {
+    var drinksOrdered = [];
+
+    function makeCoffee(drinkType) {
         //Create function makeCoffee
+        drinksOrdered.push(drinkType);
+        console.log(drinksOrdered);
         $("#coffee_image").attr("src", "static/coffee_machine.jpg");
         //Added attribute of new image to #coffee_image
          setTimeout(function() { $("#coffee_image").attr("src", "static/coffee_mug.jpg"); }, 500);

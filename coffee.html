@@ -39,7 +39,7 @@
             </tr>
         </table>
 
-        <h4>Total: <span id="revenue">Revenue Message will show up here </span></h4>
+        <h4>Total: $<span id="revenue"></span></h4>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery.js"></script>
@@ -51,9 +51,21 @@
     
     $("#coffee_image").click(function(){return makeCoffee("brew");});
     //Adding an event listener of click to #coffee_img which calls makeCoffee function
+    $("#espresso").click(function(){return makeCoffee("espresso");});
+    $("#latte").click(function(){return makeCoffee("latte");});
+    $("#hot-chocolate").click(function(){return makeCoffee("hot-chocolate");});
 
     var drinksOrdered = [];
 
+    
+
+    var prices = {
+        "espresso": 3.25, 
+        "latte": 4.15,
+        "hot-chocolate": 2.50,
+        "brew": 1.50
+}
+    
     function makeCoffee(drinkType) {
         //Create function makeCoffee
         drinksOrdered.push(drinkType);
@@ -64,8 +76,36 @@
         //Added yet another attribute of new image with a 500ms delay
          setTimeout(function() { $("#coffee_image").attr("src", "static/coffee_beans.jpg"); }, 1500);
          //Added yet another attribute of new image with a 1500ms delay
+        revenue(drinksOrdered);
+        
     }
 
+
+
+    function revenue(drinksOrdered){
+        var total = 0;
+        for (i=0; i < drinksOrdered.length; i++){
+            if (drinksOrdered[i] === "espresso"){
+                total += 3.25;
+                console.log(drinksOrdered[i]);
+            } else if (drinksOrdered[i] === "latte"){
+                total += 4.15;
+                console.log(drinksOrdered[i]);
+            } else if (drinksOrdered[i] === "hot-chocolate"){
+                total += 2.50;
+                console.log(drinksOrdered[i]);
+            } else if (drinksOrdered[i] === "brew"){
+                total += 1.50;
+                console.log(drinksOrdered[i]);
+            } else {
+                alert("We're sorry. Our barista doesn't know how to make that yet.")
+            }
+        }
+        $("span#revenue").html(total.toFixed(2));
+        console.log(total);
+        return total;
+    }
+    
     
 </script>
 

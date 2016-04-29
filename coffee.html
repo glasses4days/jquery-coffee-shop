@@ -77,6 +77,7 @@
          setTimeout(function() { $("#coffee_image").attr("src", "static/coffee_beans.jpg"); }, 1500);
          //Added yet another attribute of new image with a 1500ms delay
         revenue(drinksOrdered);
+        // calls revenue function
         
     }
 
@@ -84,6 +85,7 @@
 
     function revenue(drinksOrdered){
         var total = 0;
+        // Set variable total to 0 and this makes it an integer
         for (i=0; i < drinksOrdered.length; i++){
             if (drinksOrdered[i] === "espresso"){
                 total += 3.25;
@@ -102,7 +104,9 @@
             }
         }
         $("span#revenue").html(total.toFixed(2));
+        // selecting revenue id and changing the html to total formatted to 2 decimals
         console.log(total);
+        // prints out total in console
         return total;
     }
     
